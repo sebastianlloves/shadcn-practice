@@ -1,9 +1,37 @@
-import React from 'react'
+import { RocketIcon } from '@radix-ui/react-icons'
 
-function HomePage () {
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle
+} from '@/components/ui/alert'
+
+export default function AlertDemo () {
   return (
-    <div>Alert Page</div>
+    <div className='grid grid-cols-3 gap-4'>
+      <Alert>
+        <RocketIcon className='h-4 w-4' />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          You can add components to your app using the cli.
+        </AlertDescription>
+      </Alert>
+
+      <Alert variant='success'>
+        <RocketIcon className='h-4 w-4' />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          You can add components to your app using the cli.
+        </AlertDescription>
+      </Alert>
+
+      <Alert variant='destructive'>
+        <RocketIcon className='h-4 w-4' />
+        <AlertTitle>Heads up!</AlertTitle>
+        <AlertDescription>
+          You can add components to your app using the cli.
+        </AlertDescription>
+      </Alert>
+    </div>
   )
 }
-
-export default HomePage
