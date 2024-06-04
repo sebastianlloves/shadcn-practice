@@ -6,8 +6,10 @@ const links = [
   { name: 'alert', href: 'alert' },
   { name: 'button', href: 'button' },
   { name: 'alert dialog', href: 'alert-dialog' },
-  { name: 'dialog', href: 'dialog' }
-]
+  { name: 'dialog', href: 'dialog' },
+  { name: 'badge', href: 'badge' },
+  { name: 'calendar', href: 'calendar' }
+].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
 export default function DashboardLayout ({
   children
