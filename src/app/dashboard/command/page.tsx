@@ -3,7 +3,6 @@
 import { CalendarIcon, EnvelopeClosedIcon, FaceIcon, GearIcon, PersonIcon, RocketIcon } from '@radix-ui/react-icons'
 import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, CommandShortcut } from '@/components/ui/command'
 import { useEffect, useState } from 'react'
-import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function CommandPage () {
   const [openDialog, setOpenDialog] = useState(true)
