@@ -11,7 +11,10 @@ const links = [
   { name: 'badge', href: 'badge' },
   { name: 'calendar', href: 'calendar' },
   { name: 'avatar', href: 'avatar' },
-  { name: 'card', href: 'card' }
+  { name: 'card', href: 'card' },
+  { name: 'carousel', href: 'carousel' },
+  { name: 'checkbox', href: 'checkbox' },
+  { name: 'command', href: 'command' }
 ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
 export default function DashboardLayout ({
