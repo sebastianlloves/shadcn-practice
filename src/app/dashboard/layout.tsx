@@ -20,7 +20,11 @@ const links = [
   { name: 'menubar', href: 'menubar' },
   { name: 'input OTP', href: 'input-otp' },
   { name: 'progress', href: 'progress' },
-  { name: 'sheet', href: 'sheet' }
+  { name: 'sheet', href: 'sheet' },
+  { name: 'skeleton', href: 'skeleton' },
+  { name: 'slider', href: 'slider' },
+  { name: 'sonner', href: 'sonner' },
+  { name: 'tabs', href: 'tabs' }
 ].sort((a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
 
 export default function DashboardLayout ({
