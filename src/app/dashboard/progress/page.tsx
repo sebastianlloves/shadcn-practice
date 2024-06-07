@@ -26,7 +26,7 @@ export default function ProgressPage () {
 
   return (
     <div className='grid gap-8'>
-      <Progress value={progress} className='w-full' />
+      <Progress value={progress} progressColor={progress < 50 ? 'bg-amber-900' : 'bg-emerald-900'} className='w-full' />
       <Button variant='outline' onClick={() => setProgress(0)} className='w-52 mx-auto'>Reiniciar barra de progreso</Button>
     </div>
   )
