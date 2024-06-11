@@ -48,7 +48,8 @@ export const columns: ColumnDef<Payment>[] = [
       }).format(amount)
 
       return (<div>{formatted}</div>)
-    }
+    },
+    filterFn: 'inNumberRange'
   },
   {
     id: 'actions',

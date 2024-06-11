@@ -12,7 +12,7 @@ interface SliderProps extends React.ComponentPropsWithoutRef<typeof SliderPrimit
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   SliderProps
->(({ className, color = 'bg-primary', ...props }, ref) => (
+>(({ className, color = cn('bg-accent'), ...props }, ref) => (
   <SliderPrimitive.Root
     ref={ref}
     className={cn(
@@ -22,8 +22,9 @@ const Slider = React.forwardRef<
     {...props}
   >
     <SliderPrimitive.Track className={cn(
-      'relative h-1.5 w-full grow overflow-hidden rounded-full bg-opacity-20',
-      color
+      'relative h-1.5 w-full grow overflow-hidden rounded-full',
+      color,
+      'bg-primary/20'
     )}
     >
       <SliderPrimitive.Range className={cn(

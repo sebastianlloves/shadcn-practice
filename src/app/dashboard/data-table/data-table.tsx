@@ -1,23 +1,23 @@
 'use client'
 
 import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRowModel, getSortedRowModel, SortingState, ColumnFiltersState, getFilteredRowModel } from '@tanstack/react-table'
-
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
-import { Input } from '@/components/ui/input'
-import { Select, SelectTrigger } from '@/components/ui/select'
+import EmailSearchInput from './emailSearchInput'
+import StatusSelect from './statusSelect'
+import AmountRange from './amountRange'
 import { Payment } from '@/data/payments.data'
 
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+export interface DataTableProps< TValue> {
+  columns: ColumnDef<Payment, TValue>[]
+  data: Payment[]
 }
 
-export function DataTable<TData, TValue> ({ columns, data }: DataTableProps<TData, TValue>) {
+export function DataTable<TValue> ({ columns, data }: DataTableProps< TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filter, setFilter] = useState<ColumnFiltersState>([])
-  const [selectStatus, setSelectStatus] = useState<Payment['status'] | 'all'>('all')
+
   const table = useReactTable({
     data,
     columns,
@@ -35,20 +35,11 @@ export function DataTable<TData, TValue> ({ columns, data }: DataTableProps<TDat
 
   return (
     <div>
-      <div className='flex items-center my-4'>
-        <Input
-          placeholder='Search by Email'
-          value={table.getColumn('email')?.getFilterValue() as string ?? ''}
-          onChange={(e) => table.getColumn('email')?.setFilterValue(e.target.value)}
-          className='max-w-sm'
-        />
+      <div className='flex items-center justify-between my-4'>
+        <EmailSearchInput table={table} />
+        <AmountRange table={table} />
+        <StatusSelect table={table} />
       </div>
-
-      <Select>
-        <SelectTrigger>
-          a
-        </SelectTrigger>
-      </Select>
 
       <Table>
         <TableHeader>

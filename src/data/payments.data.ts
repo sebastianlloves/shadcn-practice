@@ -4,7 +4,7 @@ import { uniqueNamesGenerator, Config, names } from 'unique-names-generator'
 const config: Config = {
   dictionaries: [names]
 }
-const statuses = ['pending', 'processing', 'success', 'failed'] as const
+export const statuses = ['pending', 'processing', 'success', 'failed'] as const
 
 export type Payment = {
   id: string;
