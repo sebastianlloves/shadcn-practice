@@ -4,6 +4,7 @@ import { Inter as FontSans } from 'next/font/google'
 import './globals.css'
 import { cn } from '@/lib/utils'
 import { Toaster as SonnerToaster } from '@/components/ui/sonner'
+import ThemeProvider from '@/components/theme-provider'
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -22,11 +23,10 @@ export default function RootLayout ({
 }>) {
   return (
     <html lang='en'>
-      <body className={cn(
-        'min-h-screen bg-background font-sans antialiased',
-        fontSans.variable
-      )}
-      >{children}
+      <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
+        <ThemeProvider defaultTheme='system' attribute='class' enableSystem disableTransitionOnChange>
+          {children}
+        </ThemeProvider>
         <SonnerToaster gap={20} expand visibleToasts={2} position='top-center' theme='light' dir='rtl' offset='100px' />
       </body>
     </html>

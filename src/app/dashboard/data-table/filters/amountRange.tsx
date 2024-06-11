@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Slider } from '@/components/ui/slider'
 import { Payment } from '@/data/payments.data'
+import { CaretSortIcon } from '@radix-ui/react-icons'
 import { Table } from '@tanstack/react-table'
 import { useState } from 'react'
 
@@ -16,9 +17,9 @@ function AmountRange ({ table } : AmountRangeProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='outline'>Amount range</Button>
+        <Button variant='outline' className='font-normal'>Amount range<CaretSortIcon className='ml-2 h-4 w-4 opacity-50' /></Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='p-3 flex justify-between space-x-2'>
+      <DropdownMenuContent align='center' className='p-3 flex justify-between space-x-2'>
         <span className='w-16 font-light text-sm text-center'>{`$ ${amountRange[0].toFixed(2)}`}</span>
         <Slider
           defaultValue={amountRange}

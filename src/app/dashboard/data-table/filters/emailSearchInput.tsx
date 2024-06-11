@@ -10,8 +10,8 @@ function EmailSearchInput ({ table } : EmailSearchInputProps) {
   return (
     <Input
       placeholder='Search by Email'
-      value={table.getColumn('email')?.getFilterValue() as string ?? ''}
-      onChange={(e) => table.getColumn('email')?.setFilterValue(e.target.value)}
+      value={table.getColumn('E-mail')?.getFilterValue() as string ?? ''}
+      onChange={(e) => table.getColumn('E-mail')?.setFilterValue(e.target.value)}
       className='max-w-sm'
     />
   )
