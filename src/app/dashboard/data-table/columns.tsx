@@ -60,7 +60,7 @@ export const columns: ColumnDef<Payment>[] = [
     header: ({ column }) => <SortedColumnButton column={column} title='Status' />,
     cell: ({ row }) => {
       const status: Payment['status'] = row.getValue('status')
-      return (<Badge capitalize variant={statusVariant[status] ?? 'default'}>{status}</Badge>)
+      return (<Badge capitalize variant={statusVariant[status] ?? 'default'} className='mx-auto'>{status}</Badge>)
     },
     filterFn: myCustomFilterFn
   },

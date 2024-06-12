@@ -97,7 +97,7 @@ export function DataTable<TValue> ({ columns, data }: DataTableProps<TValue>) {
         </TableBody>
       </Table>
 
-      <div className='flex justify-between items-center p-2'>
+      <div className='flex justify-between items-center py-4 px-2'>
         {table.getColumn('select')?.getIsVisible() && <p className='text-muted-foreground text-center'>{`${table.getFilteredSelectedRowModel().rows.length} seleccionados de ${table.getFilteredRowModel().rows.length}`}</p>}
         <div className='flex justify-center items-center space-x-6'>
           <Button
