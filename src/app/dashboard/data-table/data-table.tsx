@@ -1,7 +1,26 @@
 'use client'
 
-import { ColumnDef, flexRender, getCoreRowModel, useReactTable, getPaginationRowModel, getSortedRowModel, SortingState, ColumnFiltersState, getFilteredRowModel, VisibilityState, RowSelectionState } from '@tanstack/react-table'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getPaginationRowModel,
+  getSortedRowModel,
+  SortingState,
+  ColumnFiltersState,
+  getFilteredRowModel,
+  VisibilityState,
+  RowSelectionState,
+} from '@tanstack/react-table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
 import { Button } from '@/components/ui/button'
 import { useState } from 'react'
 import EmailSearchInput from './filters/emailSearchInput'
@@ -9,17 +28,27 @@ import StatusSelect from './filters/statusSelect'
 import AmountRange from './filters/amountRange'
 import { Payment } from '@/data/payments.data'
 import ColumnsVisibility from './filters/columnsVisibility'
-import { Select, SelectGroup, SelectLabel, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
+import {
+  Select,
+  SelectGroup,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from '@/components/ui/select'
 
-export interface DataTableProps< TValue> {
+export interface DataTableProps<TValue> {
   columns: ColumnDef<Payment, TValue>[]
   data: Payment[]
 }
 
-export function DataTable<TValue> ({ columns, data }: DataTableProps<TValue>) {
+export function DataTable<TValue>({ columns, data }: DataTableProps<TValue>) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [filter, setFilter] = useState<ColumnFiltersState>([])
-  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({ select: false })
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    select: false,
+  })
   const [selectedRows, setSelectedRows] = useState<RowSelectionState>({})
 
   const table = useReactTable({
@@ -37,8 +66,9 @@ export function DataTable<TValue> ({ columns, data }: DataTableProps<TValue>) {
       sorting,
       columnFilters: filter,
       columnVisibility,
-      rowSelection: selectedRows
-    }
+      rowSelection: selectedRows,
+    },
+    debugTable: true,
   })
 
   // console.log(table.getFilteredSelectedRowModel().rows.map(row => row.original.clientName))
@@ -62,9 +92,9 @@ export function DataTable<TValue> ({ columns, data }: DataTableProps<TValue>) {
                     {header.isPlaceholder
                       ? null
                       : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 )
               })}
@@ -72,46 +102,49 @@ export function DataTable<TValue> ({ columns, data }: DataTableProps<TValue>) {
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length
-            ? (
-                table.getRowModel().rows.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    data-state={row.getIsSelected() && 'selected'}
-                  >
-                    {row.getVisibleCells().map((cell) => (
-                      <TableCell key={cell.id}>
-                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))
-              )
-            : (
-              <TableRow>
-                <TableCell colSpan={columns.length} className='h-24 text-center'>
-                  No results.
-                </TableCell>
+          {table.getRowModel().rows?.length ? (
+            table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                data-state={row.getIsSelected() && 'selected'}>
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
               </TableRow>
-              )}
+            ))
+          ) : (
+            <TableRow>
+              <TableCell colSpan={columns.length} className='h-24 text-center'>
+                No results.
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
 
       <div className='flex justify-between items-center py-4 px-2'>
-        {table.getColumn('select')?.getIsVisible() && <p className='text-muted-foreground text-center'>{`${table.getFilteredSelectedRowModel().rows.length} seleccionados de ${table.getFilteredRowModel().rows.length}`}</p>}
+        {table.getColumn('select')?.getIsVisible() && (
+          <p className='text-muted-foreground text-center'>{`${
+            table.getFilteredSelectedRowModel().rows.length
+          } seleccionados de ${table.getFilteredRowModel().rows.length}`}</p>
+        )}
         <div className='flex justify-center items-center space-x-6'>
           <Button
             variant='secondary'
             onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >Anterior
+            disabled={!table.getCanPreviousPage()}>
+            Anterior
           </Button>
-          <p>{`Página ${table.getState().pagination.pageIndex + 1} de ${table.getPageCount()}`}</p>
+          <p>{`Página ${
+            table.getState().pagination.pageIndex + 1
+          } de ${table.getPageCount()}`}</p>
           <Button
             variant='secondary'
             onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >Siguiente
+            disabled={!table.getCanNextPage()}>
+            Siguiente
           </Button>
         </div>
         <div>
